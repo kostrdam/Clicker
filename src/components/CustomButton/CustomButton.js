@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, Button, View } from 'react-native';
 
 class CustomButton extends Component {
     render() {
         return (
-            <Button onPress={this.playSound}
+            <View style={styles.viewStyle}>
+                <Button 
+                    style={styles.buttonStyle}
+                    onPress={this.playSound}
                     title='Play Sound'
-            >
-            </Button>
+                >
+                </Button>
+            </View>
         );
     }
 
@@ -19,7 +23,13 @@ class CustomButton extends Component {
 
 const styles = StyleSheet.create({
     buttonStyle: {
-
+       
+    },
+    viewStyle: {
+        width: 150,
+        height: 50,
+        marginTop: 100,
+        marginHorizontal: 100
     }
 });
 
