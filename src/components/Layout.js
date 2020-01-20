@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import CustomSlider from './CustomSlider/CustomSlider';
-import CustomButton from './CustomButton/CustomButton';
+import PlayButton from './PlayButton/PlayButton';
 
 const Layout = () => {
-    const [bpm, setBpm ] = useState(140);
+    const [bpm, setBpm] = useState(140);
     return (
-        <View style={styles.wrapperStyle}>
-            <View style={styles.viewStyle}>
-                <Text style={styles.textStyle}>Set BPM:</Text>
-            </View>
-            <CustomSlider setValue={setBpm} />
+        <View style={styles.viewStyle}>
+            <Text>Set BPM:</Text>
+            <CustomSlider setBpmValue={() => setBpm} />
             <Text>Current BPM: {bpm}</Text>
-            <CustomButton />
+            <PlayButton currentBpmValue={bpm} />
         </View>
     )
 };
 
 const styles = StyleSheet.create({
-    wrapperStyle: {
-        backgroundColor: '#63707e',
-        flex: 1
-    },
     viewStyle: {
-        alignItems: 'center',
-        paddingTop: 15,
-        height: 40
-    },
-    textStyle: {
-        fontSize: 20
+        backgroundColor: "#7a7a7a",
+        flex: 1
     }
 });
 
