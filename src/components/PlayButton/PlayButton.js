@@ -9,12 +9,15 @@ class PlayButton extends Component {
     constructor(props) { 
         super(props);
         this.state = {
-            bpm: this.props.currentBpmValue,
             isPlaying: false
         }
     }
 
     componentDidMount() {
+        this.sound = null;
+        this.soundPulse = null;
+
+        console.log(this);
         this.sound = new Sound(
             "click.wav",
             Sound.MAIN_BUNDLE,
@@ -39,20 +42,17 @@ class PlayButton extends Component {
             }
         );
 
-        
+        console.log(this);
     }
-
-
 
     render() {
         return (
-            <View>
+            <View style={styles.PlayButtonStyle}>
                 <TouchableOpacity onPress={this.playButtonToggle.bind(this)}>
                     <Image 
                         source={this.renderIcon()} 
                         style={styles.iconStyle} />
                 </TouchableOpacity>
-                <Text>{this.props.currentBpmValue} {this.state.isPlaying.toString()}</Text>
             </View>
         );
     }
@@ -92,7 +92,7 @@ class PlayButton extends Component {
                     })
                     counter++;
                 }
-                if(counter === 4) {
+                if(counter === this.props.currentBeatValue) {
                     counter = 0;
                 }
             }, this.countBeats());
@@ -113,6 +113,11 @@ const styles = StyleSheet.create({
     iconStyle: {
         width: 100,
         height: 100
+    },
+    PlayButtonStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 20
     }
 });
 

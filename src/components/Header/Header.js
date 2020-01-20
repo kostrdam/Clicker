@@ -15,10 +15,11 @@ const styles = StyleSheet.create({
         color: '#dfdfdf'
     },
     viewStyle: {
-        backgroundColor: '#44668d',
+        backgroundColor: '#000000',
         justifyContent: 'center',
         alignItems: 'center',
         height: 70,
+        
 
     }
 });
